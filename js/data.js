@@ -131,5 +131,8 @@ var data = {
     { lat: 47.5068459, lng: 19.046104, title: "Budapest - Hungary" },
     { lat: 48.1420836, lng: 17.10022, title: "Bratislava - Slovakia" },
     { lat: 48.2107207, lng: 16.358624, title: "Vienna - Austria" },
+    { lat: 52.8064595, lng: -2.116443, title: "Stafford - United Kingdom" },
+    { lat: 52.9505260, lng: -1.158468, title: "Nottingham - United Kingdom" },
+    { lat: 52.6585448, lng: -1.135908, title: "Leicester - United Kingdom" }
   ],
 };

@@ -1,12 +1,12 @@
-# Travels
+# Travels Map
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Reusable travel map web component for any website.
 
-![Preview](http://i.imgur.com/7kFVWux.png)
+![Preview](./screenshot.png)
 
-See a live demo here: [https://robertmarsal.com/travels/](https://robertmarsal.com/travels/)
+See a live demo here: [here](https://robertmarsal.com/travels)
 
 ## What it is
 

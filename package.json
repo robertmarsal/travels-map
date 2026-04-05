@@ -1,20 +1,51 @@
 {
-    "name": "travels",
+    "name": "travels-map",
     "private": false,
     "version": "1.0.0",
+    "description": "Reusable travel map web component",
     "type": "module",
-    "module": "./dist/travel-map.js",
+    "main": "./dist/travels-map.js",
+    "module": "./dist/travels-map.js",
+    "types": "./dist/travels-map/index.d.ts",
     "exports": {
-        ".": "./dist/travel-map.js"
+        ".": {
+            "types": "./dist/travels-map/index.d.ts",
+            "import": "./dist/travels-map.js"
+        }
     },
+    "sideEffects": true,
     "files": [
         "dist"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/robertmarsal/travels.git"
+    },
+    "bugs": {
+        "url": "https://github.com/robertmarsal/travels/issues"
+    },
+    "homepage": "https://github.com/robertmarsal/travels#readme",
+    "keywords": [
+        "web-component",
+        "custom-element",
+        "leaflet",
+        "map",
+        "travel",
+        "travels"
+    ],
+    "author": {
+        "name": "Robert Marsal"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=18"
+    },
     "scripts": {
         "dev": "vite",
-        "build": "tsc --noEmit && vite build --outDir demo-dist && vite build --config vite.lib.config.js",
+        "build": "tsc --noEmit && vite build --outDir demo-dist && vite build --config vite.lib.config.js && tsc --project tsconfig.build.json",
         "build:demo": "vite build --outDir demo-dist",
-        "build:lib": "tsc --noEmit && vite build --config vite.lib.config.js",
+        "build:lib": "tsc --noEmit && vite build --config vite.lib.config.js && tsc --project tsconfig.build.json",
+        "prepublishOnly": "npm run build",
         "typecheck": "tsc --noEmit",
         "preview": "vite preview --outDir demo-dist"
     },

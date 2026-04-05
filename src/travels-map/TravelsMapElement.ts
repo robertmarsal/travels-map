@@ -11,7 +11,7 @@ import {
     updateTileLayer,
     updateViewport,
 } from "./map";
-import type { TravelMapData, TravelPoint } from "./types";
+import type { TravelsMapData, TravelPoint } from "./types";
 import {
     normalizePoints,
     parseBooleanAttribute,
@@ -23,7 +23,7 @@ const DEFAULT_THEME = "dark-monochrome";
 
 export class TravelsMapElement extends HTMLElement {
     static get observedAttributes(): string[] {
-        return ["center", "data-src", "show-legends", "theme", "tiles-url", "zoom"];
+        return ["center", "data-src", "marker-color", "show-legends", "theme", "tiles-url", "zoom"];
     }
 
     private map: Map | null = null;
@@ -64,6 +64,7 @@ export class TravelsMapElement extends HTMLElement {
         this.ensureMap();
         this.setupResizeObserver();
         this.applyTheme();
+        this.applyMarkerColor();
         void this.loadConfiguredData();
         this.render();
     }
@@ -97,6 +98,10 @@ export class TravelsMapElement extends HTMLElement {
             this.applyTheme();
         }
 
+        if (name === "marker-color") {
+            this.applyMarkerColor();
+        }
+
         this.render();
     }
 
@@ -110,6 +115,19 @@ export class TravelsMapElement extends HTMLElement {
         if (this.isConnected) {
             this.render();
         }
+    }
+
+    get markerColor(): string | null {
+        return this.getAttribute("marker-color");
+    }
+
+    set markerColor(value: string | null) {
+        if (!value) {
+            this.removeAttribute("marker-color");
+            return;
+        }
+
+        this.setAttribute("marker-color", value);
     }
 
     private async loadConfiguredData(): Promise<void> {
@@ -127,7 +145,7 @@ export class TravelsMapElement extends HTMLElement {
                 throw new Error(`Failed to load map data: ${response.status}`);
             }
 
-            const payload = (await response.json()) as TravelMapData | TravelPoint[];
+            const payload = (await response.json()) as TravelsMapData | TravelPoint[];
             if (requestId !== this.dataRequestId) {
                 return;
             }
@@ -172,6 +190,17 @@ export class TravelsMapElement extends HTMLElement {
 
     private applyTheme(): void {
         this.dataset.theme = this.getTheme();
+    }
+
+    private applyMarkerColor(): void {
+        const markerColor = this.markerColor;
+
+        if (!markerColor) {
+            this.style.removeProperty("--travels-marker");
+            return;
+        }
+
+        this.style.setProperty("--travels-marker", markerColor);
     }
 
     private getCenter(): [number, number] {

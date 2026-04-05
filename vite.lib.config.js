@@ -1,11 +1,12 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
+    publicDir: false,
     build: {
         lib: {
             entry: "src/travels-map/index.ts",
             name: "TravelsMapElement",
-            fileName: "travel-map",
+            fileName: "travels-map",
             formats: ["es"],
         },
         rollupOptions: {

@@ -19,6 +19,12 @@ This package exposes a custom element:
 It is framework-agnostic, so it can be used in plain HTML, React, Vue, Svelte,
 Astro, or any other frontend that can load a browser module.
 
+## Installation
+
+```sh
+npm install travels-map
+```
+
 ## Local development
 
 ```sh
@@ -28,21 +34,18 @@ npm install
 npm run dev
 ```
 
-The source now lives under `src/`:
+## Demo
 
-- `src/travels-map/` contains the reusable component
-- `src/demo/` contains the local demo page
+The repository includes a local demo app for development and manual testing.
 
-## Build outputs
+Run it with:
 
 ```sh
-npm run build
+npm run dev
 ```
 
-This generates:
-
-- `demo-dist/` for the demo site
-- `dist/` for the reusable library bundle
+Then edit [`src/demo/data.ts`](./src/demo/data.ts) to change the sample points
+shown in the demo.
 
 ## Usage
 
@@ -52,12 +55,13 @@ This generates:
 <travels-map
     data-src="/travels.json"
     theme="dark-monochrome"
+    marker-color="#ff0066"
     center="38.957083,-39.074225"
     zoom="3"
     show-legends="true"
 ></travels-map>
 
-<script type="module" src="/dist/travel-map.js"></script>
+<script type="module" src="/dist/travels-map.js"></script>
 ```
 
 Your JSON can be either:
@@ -75,9 +79,10 @@ or a raw array of point objects.
 ### JavaScript property API
 
 ```js
-import "travels";
+import "travels-map";
 
 const map = document.querySelector("travels-map");
+map.markerColor = "#00d1b2";
 map.points = [
     { lat: 51.500736, lng: -0.124625, title: "London - United Kingdom" },
 ];
@@ -89,6 +94,7 @@ Attributes:
 
 - `data-src`: URL returning JSON data
 - `theme`: currently `dark-monochrome`
+- `marker-color`: optional CSS color for the dots
 - `center`: fallback map center as `"lat,lng"`
 - `zoom`: fallback zoom level when there are no points
 - `show-legends`: set to `"false"` to hide legends
@@ -97,18 +103,10 @@ Attributes:
 Properties:
 
 - `points`: array of `{ lat, lng, title }`
+- `markerColor`: optional color string for the dots
 
 Styling:
 
 - The component uses shadow DOM.
 - You can theme it with CSS custom properties on `travels-map`, such as
-  `--travel-marker`, `--travel-panel-bg`, and `--travel-map-bg`.
-
-## Demo data
-
-The local demo page reads from `src/demo/data.ts`.
-
-## Notes
-
-No API key is required. The component uses [Leaflet](https://leafletjs.com/)
-with free map tiles by default.
+  `--travels-marker`, `--travels-panel-bg`, and `--travels-map-bg`.

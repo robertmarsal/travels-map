@@ -5,4 +5,4 @@ if (!customElements.get("travels-map")) {
 }
 
 export { TravelsMapElement };
-export type { TravelMapData, TravelPoint } from "./types";
+export type { TravelsMapData, TravelPoint } from "./types";

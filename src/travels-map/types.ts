@@ -4,6 +4,6 @@ export type TravelPoint = {
     title: string;
 };
 
-export type TravelMapData = {
+export type TravelsMapData = {
     points: TravelPoint[];
 };

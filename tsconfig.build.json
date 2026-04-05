@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": false,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "stripInternal": true
+    },
+    "include": ["src/travels-map/**/*.ts", "src/vite-env.d.ts"]
+}

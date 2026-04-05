@@ -1,0 +1,29 @@
+{
+    "name": "travels",
+    "private": false,
+    "version": "1.0.0",
+    "type": "module",
+    "module": "./dist/travel-map.js",
+    "exports": {
+        ".": "./dist/travel-map.js"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build --outDir demo-dist && vite build --config vite.lib.config.js",
+        "build:demo": "vite build --outDir demo-dist",
+        "build:lib": "tsc --noEmit && vite build --config vite.lib.config.js",
+        "typecheck": "tsc --noEmit",
+        "preview": "vite preview --outDir demo-dist"
+    },
+    "dependencies": {
+        "leaflet": "^1.9.4"
+    },
+    "devDependencies": {
+        "@types/leaflet": "^1.9.21",
+        "typescript": "^5.9.2",
+        "vite": "^7.1.0"
+    }
+}

@@ -1,2 +1,4 @@
-.idea
-js/data.js
+node_modules
+dist
+demo-dist
+.codex
